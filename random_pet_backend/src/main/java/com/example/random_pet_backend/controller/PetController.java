@@ -29,6 +29,11 @@ public class PetController {
         return petService.findAll();
     }
 
+    @GetMapping("/retrievePet/{petId}")
+    public Pet findPet(@PathVariable int petId) {
+        return (Pet)petService.findById(petId);
+    }
+
     //This is a POST request to add a new pet.
     //http://localhost:8080/addPet
     @PostMapping("/addPet")
