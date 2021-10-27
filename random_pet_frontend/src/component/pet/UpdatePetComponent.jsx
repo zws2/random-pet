@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Formik, Form, Field } from 'formik'
-import EmployeeDataService from '../../service/EmployeeDataService'
+import PetDataService from '../../service/PetDataService'
 
-class UpdateEmployeeComponent extends Component {
+class UpdatePetComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -16,15 +16,15 @@ class UpdateEmployeeComponent extends Component {
     }
 
     onSubmit(values) {
-        let employee = {
+        let pet = {
             id: this.state.id,
             jobTitle: values.jobTitle,
             firstName: values.firstName,
             lastName: values.lastName,
             email: values.email
         }
-            EmployeeDataService.updateEmployee(employee)
-            .then(() => this.props.history.push('/EmployeeRegistry'))
+            PetDataService.updatePet(pet)
+            .then(() => this.props.history.push('/PetRegistry'))
     }
 
     render() {
@@ -32,7 +32,7 @@ class UpdateEmployeeComponent extends Component {
         return(
             <div>
                 <div className="jumbotron" style={{backgroundColor: "gray"}}>
-                <h3 style={{textAlign: "center"}}>Update Employee</h3>
+                <h3 style={{textAlign: "center"}}>Update Pet</h3>
                 </div>
                 <div className="container">
                     <Formik
@@ -74,4 +74,4 @@ class UpdateEmployeeComponent extends Component {
     }
 }
 
-export default UpdateEmployeeComponent
+export default UpdatePetComponent

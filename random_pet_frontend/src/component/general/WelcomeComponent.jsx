@@ -13,9 +13,9 @@ class WelcomeComponent extends Component {
             <div className="container">
                 <br/><br/>
                 <div className="jumbotron" style={{textAlign:"center", backgroundColor:"Black"}}>
-                <h1 style={{color:"Green"}}>Welcome {this.state.name} to the Employee Registry!!!</h1>
+                <h1 style={{color:"Green"}}>Welcome {this.state.name} to the Pet Registry!!!</h1>
                 <br/>
-                <h2 style={{color:"white"}}>You can manage your employees <Link to="/EmployeeRegistry">here</Link></h2> 
+                <h2 style={{color:"white"}}>You can manage your pets <Link to="/PetRegistry">here</Link></h2> 
                 </div>
             </div>
         )
