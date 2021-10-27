@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import EmployeeDataService from '../../service/EmployeeDataService'
+import PetDataService from '../../service/PetDataService'
 
-class AddEmployee extends Component {
+class AddPet extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -23,15 +23,15 @@ class AddEmployee extends Component {
     }
 
     handleSubmit() {
-        let employee = {
+        let pet = {
             id: this.state.id,
             jobTitle: this.state.jobTitle,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email
         }
-        EmployeeDataService.createEmployee(employee)
-            .then(this.props.history.push(`/EmployeeRegistry`))
+        PetDataService.createPet(pet)
+            .then(this.props.history.push(`/PetRegistry`))
 
         this.state.jack.forEach((elm) => {
 
@@ -43,7 +43,7 @@ class AddEmployee extends Component {
         return(
             <div>
                 <div className="jumbotron" style={{backgroundColor: "gray"}}>
-                <h3 style={{textAlign: "center"}}>Add Employee</h3>
+                <h3 style={{textAlign: "center"}}>Add Pet</h3>
                 </div>
                 <div className="container">
                     <form onSubmit={this.handleSubmit}>
@@ -75,4 +75,4 @@ class AddEmployee extends Component {
     }
 }
 
-export default AddEmployee
+export default AddPet
