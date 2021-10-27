@@ -6,10 +6,10 @@ class AddPet extends Component {
         super(props)
         this.state = {
             id: this.props.match.params.id,
-            jobTitle: '',
-            firstName: '',
-            lastName: '',
-            email: '',
+            title: '',
+            caption: '',
+            contributor: '',
+            img: '',
             jack: []
         }
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,10 +25,10 @@ class AddPet extends Component {
     handleSubmit() {
         let pet = {
             id: this.state.id,
-            jobTitle: this.state.jobTitle,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email
+            title: this.state.title,
+            caption: this.state.caption,
+            contributor: this.state.contributor,
+            img: this.state.img
         }
         PetDataService.createPet(pet)
             .then(this.props.history.push(`/PetRegistry`))
@@ -52,20 +52,20 @@ class AddPet extends Component {
                             <input className="form-control" type="text" value={this.state.id} disabled/>
                         </div>
                         <div>
-                            <label>Job Title:</label>
-                            <input className="form-control" type="text" name="jobTitle" onChange={this.handleChange}/>
+                            <label>Title:</label>
+                            <input className="form-control" type="text" name="title" onChange={this.handleChange}/>
                         </div>
                         <div>
-                            <label>First Name:</label>
-                            <input className="form-control" type="text" name="firstName" onChange={this.handleChange}/>
+                            <label>Caption:</label>
+                            <input className="form-control" type="text" name="caption" onChange={this.handleChange}/>
                         </div>       
                         <div>
-                            <label>Last Name:</label>
-                            <input className="form-control" type="text" name="lastName" onChange={this.handleChange}/>
+                            <label>Contributor:</label>
+                            <input className="form-control" type="text" name="contributor" onChange={this.handleChange}/>
                         </div>      
                         <div>
-                            <label>Email:</label>
-                            <input className="form-control" type="text" name="email" onChange={this.handleChange}/>
+                            <label>Image:</label>
+                            <input className="form-control" type="text" name="img" onChange={this.handleChange}/>
                         </div><br/><br/>
                         <button className="btn btn-success" type="submit">Submit</button><br/><br/>
                     </form><br/><br/>

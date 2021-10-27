@@ -28,21 +28,21 @@ class PetRegistryComponent extends Component {
         )
     }
 
-    deletePetClicked(id, firstName, lastName) {
+    deletePetClicked(id, title, caption) {
         console.log('Delete Pet Clicked')
         PetDataService.deletePet(id)
         .then(
             response => {
-                this.setState({message: `Deleted Pet: ${firstName} ${lastName}`})
+                this.setState({message: `Deleted Pet: ${title}`})
                 alert(this.state.message)
                 this.refreshPetRegistry();
             }
         )
     }
     
-    upDatePetClicked(id, jobTitle) {
+    upDatePetClicked(id, title) {
         console.log('Update Pet Clicked')
-        this.props.history.push(`/pet/${id}/${jobTitle}`)
+        this.props.history.push(`/pet/${id}/${title}`)
     }
 
     addPetClicked() {
@@ -70,12 +70,11 @@ class PetRegistryComponent extends Component {
                                    pets =>
                                    <tr style={{textAlign: "center"}} key={pets.id}>
                                        <td>{pets.id}</td>
-                                       <td>{pets.jobTitle}</td>
-                                       <td>{pets.firstName}</td>
-                                       <td>{pets.lastName}</td>
-                                       <td>{pets.email}</td>
-                                       <td><button className="btn btn-warning" onClick={() => this.deletePetClicked(pets.id, pets.firstName, pets.lastName)}>Delete</button></td>
-                                       <td><button className="btn btn-success" onClick={() => this.upDatePetClicked(pets.id, pets.jobTitle)}>Update</button></td>
+                                       <td>{pets.title}</td>
+                                       <td>{pets.caption}</td>
+                                       <td>{pets.contributor}</td>
+                                       <td><button className="btn btn-warning" onClick={() => this.deletePetClicked(pets.id, pets.title, pets.caption)}>Delete</button></td>
+                                       <td><button className="btn btn-success" onClick={() => this.upDatePetClicked(pets.id, pets.title)}>Update</button></td>
                                    </tr>
                                )
                            }
