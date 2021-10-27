@@ -59,12 +59,9 @@ class PetRegistryComponent extends Component {
                        <thead>
                            <tr style={{textAlign: "center" , color: "black"}}>
                                <th>Id</th>
-                               <th>Job Title</th>
-                               <th>First Name</th>
-                               <th>Last Name</th>
-                               <th>Email</th>
-                               <th>Delete</th>
-                               <th>Update</th>
+                               <th>Title</th>
+                               <th>Caption</th>
+                               <th>Contributor></th>
                            </tr>
                        </thead>
                        <tbody>

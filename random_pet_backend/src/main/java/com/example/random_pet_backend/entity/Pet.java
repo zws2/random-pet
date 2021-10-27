@@ -14,8 +14,14 @@ public class Pet {
     @Column(name = "id") //This is mapping the primary key to the id column in the table.
     private int id;
 
-    @Column(name = "caption") //This will map the jobTitle field to the column named job_title in the table.
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "caption")
     private String caption;
+
+    @Column(name = "contributor")
+    private String contributor;
 
     @Column(name = "img")
     private Blob img;
@@ -24,9 +30,11 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(int id, String caption, Blob img) {
+    public Pet(int id, String title, String caption, String contributor, Blob img) {
         this.id = id;
+        this.title = title;
         this.caption = caption;
+        this.contributor = contributor;
         this.img = img;
     }
 
@@ -34,7 +42,9 @@ public class Pet {
     public String toString() {
         return "Pet{" +
                 "id=" + id +
+                ", title='" + title + '\'' +
                 ", caption='" + caption + '\'' +
+                ", contributor='" + contributor + '\'' +
                 ", img=" + img +
                 '}';
     }
@@ -47,12 +57,28 @@ public class Pet {
         this.id = id;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getCaption() {
         return caption;
     }
 
     public void setCaption(String caption) {
         this.caption = caption;
+    }
+
+    public String getContributor() {
+        return contributor;
+    }
+
+    public void setContributor(String contributor) {
+        this.contributor = contributor;
     }
 
     public Blob getImg() {

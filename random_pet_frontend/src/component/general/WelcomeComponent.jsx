@@ -11,12 +11,12 @@ class WelcomeComponent extends Component {
     render() {
         return(
             <div className="image_container">
-                <h1 style={{textAlign: "center"}}>Title</h1>
+                <h1 style={{textAlign: "center"}}>Cash Money</h1>
                 <div class="imgbox">
-                    <img class="center-fit" src='https://i.imgur.com/67tSocD.jpeg'></img>
+                    <img class="center-fit" src='https://i.imgur.com/sFq0wAC.jpeg'></img>
 {/*                     https://i.imgur.com/QBSDdJJ.jpeg */}
                 </div>
-                <p style={{textAlign:"center"}}>caption</p>
+                <p style={{textAlign:"center"}}>this birb is wearing a money hat</p>
             </div>
         )
     }
