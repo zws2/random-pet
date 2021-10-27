@@ -16,7 +16,7 @@ class RouterComponent extends Component {
                     <Switch>
                         <Route exact path="/"><WelcomeComponent name="Everett"/></Route>                       
                         <Route path="/thePet/:id" component={AddPet} />
-                        <Route path="/pet/:id/:jobTitle" component={UpdatePetComponent} />
+                        <Route path="/pet/:id/:title" component={UpdatePetComponent} />
                         <Route path="/PetRegistry" exact component={PetRegistryComponent} />
                     </Switch>
                 <FooterComponent /> 

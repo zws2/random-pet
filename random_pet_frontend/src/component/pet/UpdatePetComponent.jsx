@@ -7,10 +7,10 @@ class UpdatePetComponent extends Component {
         super(props)
         this.state = {
             id: this.props.match.params.id,
-            jobTitle: this.props.match.params.jobTitle,
-            firstName: '',
-            lastName: '',
-            email: ''
+            title: this.props.match.params.title,
+            caption: this.props.match.params.caption,
+            contributor: this.props.match.params.contributor,
+            img: this.props.match.params.img
         }
         this.onSubmit = this.onSubmit.bind(this)
     }
@@ -18,17 +18,17 @@ class UpdatePetComponent extends Component {
     onSubmit(values) {
         let pet = {
             id: this.state.id,
-            jobTitle: values.jobTitle,
-            firstName: values.firstName,
-            lastName: values.lastName,
-            email: values.email
+            title: values.title,
+            caption: values.caption,
+            contributor: values.contributor,
+            img: values.img
         }
             PetDataService.updatePet(pet)
             .then(() => this.props.history.push('/PetRegistry'))
     }
 
     render() {
-        let {id, jobTitle, firstName, lastName, email} = this.state
+        let {id, title, caption, contributor, img} = this.state
         return(
             <div>
                 <div className="jumbotron" style={{backgroundColor: "gray"}}>
@@ -36,7 +36,7 @@ class UpdatePetComponent extends Component {
                 </div>
                 <div className="container">
                     <Formik
-                        initialValues={{id, jobTitle, firstName, lastName, email}}
+                        initialValues={{id, title, caption, contributor, img}}
                         onSubmit={this.onSubmit}
                         enableReinitialize={true}
                     >
@@ -48,20 +48,20 @@ class UpdatePetComponent extends Component {
                                         <Field className="form-control" type="text" name="id" disabled />
                                     </fieldset>
                                     <fieldset>
-                                        <label>Job Title</label>
-                                        <Field className="form-control" type="text" name="jobTitle" />
+                                        <label>Title</label>
+                                        <Field className="form-control" type="text" name="title" />
                                     </fieldset>
                                     <fieldset>
-                                        <label>First Name</label>
-                                        <Field className="form-control" type="text" name="firstName" />
+                                        <label>Caption</label>
+                                        <Field className="form-control" type="text" name="caption" />
                                     </fieldset>
                                     <fieldset>
-                                        <label>Last Name</label>
-                                        <Field className="form-control" type="text" name="lastName" />
+                                        <label>Contributor</label>
+                                        <Field className="form-control" type="text" name="contributor" />
                                     </fieldset>
                                     <fieldset>
-                                        <label>Email</label>
-                                        <Field className="form-control" type="text" name="email" />
+                                        <label>Image</label>
+                                        <Field className="form-control" type="text" name="img" />
                                     </fieldset><br/>
                                     <button className="btn btn-success" type="submit">Save</button>
                                 </Form>
