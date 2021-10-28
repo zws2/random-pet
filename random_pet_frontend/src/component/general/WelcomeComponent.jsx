@@ -28,37 +28,22 @@ class WelcomeComponent extends Component {
 
     render() {
 
-        const pet = this.state.pets[0];
+        const pet = this.state.pets.sort(() => Math.random() - Math.random())
+                                               .find(() => true);
 
-        return(
-            <div>
-                <div className="image_container">
-                    <h1 style={{textAlign: "center"}}>Cash Money</h1>
-                    <div class="imgbox">
-                    {
-                        pet &&
-                            <img class="img-circle img-responsive center-fit" src={"data:image/png;base64," + pet.img} />
-                    }
-                </div>
-                    <p style={{textAlign:"center"}}>this birb is wearing a money hat</p>
-                </div>
-        
-        const item = this.state.pets.sort(() => Math.random() - Math.random())
-                                       .find(() => true);
         return(         
             <div className="image_container">
             {
-                    item &&
+                    pet &&
                 <div >        
-                <h1 style={{textAlign: "center"}}>{item.title}</h1>
+                <h1 style={{textAlign: "center"}}>{pet.title}</h1>
                 <div className="imgbox">
-                    <img className="center-fit" src='https://i.imgur.com/sFq0wAC.jpeg'></img>
+                    <img class="img-circle img-responsive center-fit" src={"data:image/png;base64," + pet.img} />
                 </div>    
-                <p style={{textAlign:"center"}}>Caption: {item.caption}</p>
-                <p style={{textAlign:"center"}}>Contributor: {item.contributor}</p>
+                <p style={{textAlign:"center"}}>Caption: {pet.caption}</p>
+                <p style={{textAlign:"center"}}>Contributor: {pet.contributor}</p>
                 </div >
             }
-                   
             </div>
         )
     }
