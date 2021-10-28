@@ -14,6 +14,7 @@ class AddPet extends Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.handleFile = this.handleFile.bind(this)
     }
 
     handleChange(event) {
@@ -22,13 +23,35 @@ class AddPet extends Component {
         })
     }
 
+    handleFile(event){
+        const preview = document.querySelector('img');
+        const file = document.querySelector('input[type=file]').files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener("load", function () {
+        // convert image file to base64 string
+            preview.src = reader.result;
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+
+        file.arrayBuffer().then((arrayBuffer) => {
+            let blob = new Blob([new Uint8Array(arrayBuffer)], {type: file.type });
+            console.log(blob);
+            console.log(new Uint8Array(arrayBuffer))
+        });
+
+    }
+
     handleSubmit() {
         let pet = {
             id: this.state.id,
             title: this.state.title,
             caption: this.state.caption,
-            contributor: this.state.contributor
-//             img: this.state.img
+            contributor: this.state.contributor,
+//             img: blob
         }
         PetDataService.createPet(pet)
             .then(this.props.history.push(`/PetRegistry`))
@@ -47,27 +70,28 @@ class AddPet extends Component {
                 </div>
                 <div className="container">
                     <form onSubmit={this.handleSubmit}>
-                        <div className="form-group">
-                            <label>ID:</label>
-                            <input className="form-control" type="text" value={this.state.id} disabled/>
-                        </div>
-                        <div>
-                            <label>Title:</label>
-                            <input className="form-control" type="text" name="title" onChange={this.handleChange}/>
-                        </div>
-                        <div>
-                            <label>Caption:</label>
-                            <input className="form-control" type="text" name="caption" onChange={this.handleChange}/>
-                        </div>       
-                        <div>
-                            <label>Contributor:</label>
-                            <input className="form-control" type="text" name="contributor" onChange={this.handleChange}/>
-                        </div>      
+{/*                         <div className="form-group"> */}
+{/*                             <label>ID:</label> */}
+{/*                             <input className="form-control" type="text" value={this.state.id} disabled/> */}
+{/*                         </div> */}
 {/*                         <div> */}
-{/*                             <label>Image:</label> */}
-{/*                             <input className="form-control" type="text" name="img" onChange={this.handleChange}/> */}
-{/*                         </div><br/><br/> */}
-                        <button className="btn btn-success" type="submit">Submit</button><br/><br/>
+{/*                             <label>Title:</label> */}
+{/*                             <input className="form-control" type="text" name="title" onChange={this.handleChange}/> */}
+{/*                         </div> */}
+{/*                         <div> */}
+{/*                             <label>Caption:</label> */}
+{/*                             <input className="form-control" type="text" name="caption" onChange={this.handleChange}/> */}
+{/*                         </div>        */}
+{/*                         <div> */}
+{/*                             <label>Contributor:</label> */}
+{/*                             <input className="form-control" type="text" name="contributor" onChange={this.handleChange}/> */}
+{/*                         </div> */}
+                        <div>
+                             <input type="file" name="img" onChange={this.handleFile}/>
+                             <img src="" height="200" alt="Image preview..."></img>
+                        </div>
+                             <input className="btn btn-success" type="submit" value="Submit" name="submit"/>
+{/*                         <button className="btn btn-success" type="submit">Submit</button><br/><br/> */}
                     </form><br/><br/>
                 </div>
             </div>

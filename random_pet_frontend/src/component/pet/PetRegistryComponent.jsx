@@ -49,7 +49,7 @@ class PetRegistryComponent extends Component {
         console.log('Add AddPet Clicked')
         this.props.history.push(`/thePet/-1`)
     }
- 
+
    render() {
        return(
            <div className="container">
@@ -80,6 +80,8 @@ class PetRegistryComponent extends Component {
                            }
                        </tbody>
                    </table>
+
+
                    <div className="row">
                        <br/>
                        <button className="btn btn-success" onClick={this.addPetClicked}>Add Pet</button>
