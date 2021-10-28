@@ -2,6 +2,7 @@ package com.example.random_pet_backend.entity;
 
 import javax.persistence.*;
 import java.sql.Blob;
+import java.sql.SQLException;
 
 //Pet Entity
 @Entity //This will let Java know that this is an entity that we are going to map to a database table.
@@ -24,18 +25,22 @@ public class Pet {
     private String contributor;
 
     @Column(name = "img")
-    private Blob img;
+    private byte[] img;
 
     //default constructor
     public Pet() {
     }
 
-    public Pet(int id, String title, String caption, String contributor, Blob img) {
+    public Pet(int id, String title, String caption, String contributor, Blob img){
         this.id = id;
         this.title = title;
         this.caption = caption;
         this.contributor = contributor;
-        this.img = img;
+        try{
+            this.img = img.getBytes(1, (int) img.length());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -81,11 +86,11 @@ public class Pet {
         this.contributor = contributor;
     }
 
-    public Blob getImg() {
+    public byte[] getImg() {
         return img;
     }
 
-    public void setImg(Blob img) {
+    public void setImg(byte[] img) {
         this.img = img;
     }
 }
