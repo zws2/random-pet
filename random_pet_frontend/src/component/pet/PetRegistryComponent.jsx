@@ -61,7 +61,7 @@ class PetRegistryComponent extends Component {
                                <th>Id</th>
                                <th>Title</th>
                                <th>Caption</th>
-                               <th>Contributor></th>
+                               <th>Contributor</th>
                            </tr>
                        </thead>
                        <tbody>
