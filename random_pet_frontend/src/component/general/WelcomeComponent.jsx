@@ -42,6 +42,23 @@ class WelcomeComponent extends Component {
                 </div>
                     <p style={{textAlign:"center"}}>this birb is wearing a money hat</p>
                 </div>
+        
+        const item = this.state.pets.sort(() => Math.random() - Math.random())
+                                       .find(() => true);
+        return(         
+            <div className="image_container">
+            {
+                    item &&
+                <div >        
+                <h1 style={{textAlign: "center"}}>{item.title}</h1>
+                <div className="imgbox">
+                    <img className="center-fit" src='https://i.imgur.com/sFq0wAC.jpeg'></img>
+                </div>    
+                <p style={{textAlign:"center"}}>Caption: {item.caption}</p>
+                <p style={{textAlign:"center"}}>Contributor: {item.contributor}</p>
+                </div >
+            }
+                   
             </div>
         )
     }
