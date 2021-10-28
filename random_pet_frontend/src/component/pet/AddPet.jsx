@@ -27,8 +27,8 @@ class AddPet extends Component {
             id: this.state.id,
             title: this.state.title,
             caption: this.state.caption,
-            contributor: this.state.contributor,
-            img: this.state.img
+            contributor: this.state.contributor
+//             img: this.state.img
         }
         PetDataService.createPet(pet)
             .then(this.props.history.push(`/PetRegistry`))
@@ -63,10 +63,10 @@ class AddPet extends Component {
                             <label>Contributor:</label>
                             <input className="form-control" type="text" name="contributor" onChange={this.handleChange}/>
                         </div>      
-                        <div>
-                            <label>Image:</label>
-                            <input className="form-control" type="text" name="img" onChange={this.handleChange}/>
-                        </div><br/><br/>
+{/*                         <div> */}
+{/*                             <label>Image:</label> */}
+{/*                             <input className="form-control" type="text" name="img" onChange={this.handleChange}/> */}
+{/*                         </div><br/><br/> */}
                         <button className="btn btn-success" type="submit">Submit</button><br/><br/>
                     </form><br/><br/>
                 </div>
