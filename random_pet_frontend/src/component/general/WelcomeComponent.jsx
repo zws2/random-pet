@@ -35,7 +35,7 @@ class WelcomeComponent extends Component {
             <div className="image_container">
             {
                     item &&
-                <div class ="center-fit">        
+                <div >        
                 <h1 style={{textAlign: "center"}}>{item.title}</h1>
                 <div className="imgbox">
                     <img className="center-fit" src='https://i.imgur.com/sFq0wAC.jpeg'></img>
