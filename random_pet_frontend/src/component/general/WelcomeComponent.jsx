@@ -8,33 +8,43 @@ class WelcomeComponent extends Component {
         this.state = {
             pets: []
         }
-        this.refreshPetRegistry.refreshPetRegistry.bind(this)
+        this.refreshPetRegistry = this.refreshPetRegistry.bind(this)
+    }
+
+    componentDidMount() {
+            this.refreshPetRegistry();
     }
 
     refreshPetRegistry() {
-        var image
         PetDataService.retrieveAllPets()
         .then(
             response => {
-                image = response.data
+                this.setState({
+                    pets: response.data,
+                })
             }
         )
-        console.log(image)
     }
 
     render() {
 
+        const pet = this.state.pets[0];
+
         return(
-            <div className="image_container">
-                <h1 style={{textAlign: "center"}}>Cash Money</h1>
-                <div class="imgbox">
-{/*                     <img class="center-fit" src='https://i.imgur.com/sFq0wAC.jpeg'/> */}
-{/*                     <img class="img-circle img-responsive center-fit" src={"data:image/png;base64," + image} /> */}
-{/*                     https://i.imgur.com/QBSDdJJ.jpeg */}
+            <div>
+                <div className="image_container">
+                    <h1 style={{textAlign: "center"}}>Cash Money</h1>
+                    <div class="imgbox">
+                    {
+                        pet &&
+                            <img class="img-circle img-responsive center-fit" src={"data:image/png;base64," + pet.img} />
+                    }
                 </div>
-                <p style={{textAlign:"center"}}>this birb is wearing a money hat</p>
+                    <p style={{textAlign:"center"}}>this birb is wearing a money hat</p>
+                </div>
             </div>
         )
     }
 }
+
 export default WelcomeComponent;  
