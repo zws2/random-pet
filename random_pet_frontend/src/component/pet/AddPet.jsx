@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PetDataService from '../../service/PetDataService'
 
 class AddPet extends Component {
+
     constructor(props) {
         super(props)
         this.state = {
@@ -24,34 +25,35 @@ class AddPet extends Component {
     }
 
     handleFile(event){
-        const preview = document.querySelector('img');
-        const file = document.querySelector('input[type=file]').files[0];
-        const reader = new FileReader();
+        const preview = document.querySelector('img')
+        const file = document.querySelector('input[type=file]').files[0]
+        const reader = new FileReader()
 
         reader.addEventListener("load", function () {
-        // convert image file to base64 string
-            preview.src = reader.result;
-        }, false);
+            preview.src = reader.result
+        }, false)
 
         if (file) {
-            reader.readAsDataURL(file);
+            reader.readAsDataURL(file)
         }
-
-        file.arrayBuffer().then((arrayBuffer) => {
-            let blob = new Blob([new Uint8Array(arrayBuffer)], {type: file.type });
-            console.log(blob);
-            console.log(new Uint8Array(arrayBuffer))
-        });
-
     }
 
     handleSubmit() {
+        const preview = document.querySelector('img')
+        let image_source = preview.src.substring(
+        preview.src.indexOf(",") + 1,
+        preview.src.length)
+
+        console.log(image_source)
+
+
+
         let pet = {
             id: this.state.id,
             title: this.state.title,
             caption: this.state.caption,
             contributor: this.state.contributor,
-//             img: blob
+            img: image_source
         }
         PetDataService.createPet(pet)
             .then(this.props.history.push(`/PetRegistry`))
@@ -63,9 +65,10 @@ class AddPet extends Component {
     }
 
     render() {
+
         return(
             <div>
-                <div className="jumbotron" style={{backgroundColor: "gray"}}>
+                <div className="jumbotron" style={{height: "50px", backgroundColor: "gray"}}>
                 <h3 style={{textAlign: "center"}}>Add Pet</h3>
                 </div>
                 <div className="container">
@@ -74,22 +77,24 @@ class AddPet extends Component {
 {/*                             <label>ID:</label> */}
 {/*                             <input className="form-control" type="text" value={this.state.id} disabled/> */}
 {/*                         </div> */}
-{/*                         <div> */}
-{/*                             <label>Title:</label> */}
-{/*                             <input className="form-control" type="text" name="title" onChange={this.handleChange}/> */}
-{/*                         </div> */}
-{/*                         <div> */}
-{/*                             <label>Caption:</label> */}
-{/*                             <input className="form-control" type="text" name="caption" onChange={this.handleChange}/> */}
-{/*                         </div>        */}
-{/*                         <div> */}
-{/*                             <label>Contributor:</label> */}
-{/*                             <input className="form-control" type="text" name="contributor" onChange={this.handleChange}/> */}
-{/*                         </div> */}
                         <div>
+                            <label>Title:</label>
+                            <input className="form-control" type="text" name="title" onChange={this.handleChange}/>
+                        </div>
+                        <div>
+                            <label>Caption:</label>
+                            <input className="form-control" type="text" name="caption" onChange={this.handleChange}/>
+                        </div>
+                        <div>
+                            <label>Contributor:</label>
+                            <input className="form-control" type="text" name="contributor" onChange={this.handleChange}/>
+                        </div>
+                        <div>
+                        <br />
                              <input type="file" name="img" onChange={this.handleFile}/>
                              <img src="" height="200" alt="Image preview..."></img>
                         </div>
+                        <br />
                              <input className="btn btn-success" type="submit" value="Submit" name="submit"/>
 {/*                         <button className="btn btn-success" type="submit">Submit</button><br/><br/> */}
                     </form><br/><br/>

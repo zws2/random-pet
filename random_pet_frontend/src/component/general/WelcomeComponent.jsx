@@ -31,8 +31,6 @@ class WelcomeComponent extends Component {
         const pet = this.state.pets.sort(() => Math.random() - Math.random())
                                                .find(() => true);
 
-        console.log(pet.img)
-
         return(         
             <div className="image_container">
             {
@@ -40,7 +38,7 @@ class WelcomeComponent extends Component {
                     <div >
                         <h1 style={{textAlign: "center"}}>{pet.title}</h1>
                         <div className="imgbox">
-                            <img class="img-circle img-responsive center-fit" src={"data:image/png;base64," + pet.img} />
+                            <img class="img-circle img-responsive center-fit" alt={pet.caption} src={"data:image/png;base64," + pet.img} />
                         </div>
                         <p style={{textAlign:"center"}}>Caption: {pet.caption}</p>
                         <p style={{textAlign:"center"}}>Contributor: {pet.contributor}</p>
