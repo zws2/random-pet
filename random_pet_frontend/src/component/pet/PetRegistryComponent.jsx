@@ -19,7 +19,7 @@ class PetRegistryComponent extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(prevState.pets.length !== this.state.pets.length){
+        if(prevState.pets !== this.state.pets){
             console.log("componentDidUpdate")
         }
     }
@@ -28,6 +28,7 @@ class PetRegistryComponent extends Component {
         PetDataService.retrieveAllPets()
         .then(
             response => {
+                console.log("response")
                 this.setState({
                     pets: response.data,
                 })
@@ -60,6 +61,7 @@ class PetRegistryComponent extends Component {
 
    render() {
         console.log("render")
+        console.log(this.state.pets)
 
         return(
            <div className="container">
