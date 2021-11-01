@@ -13,6 +13,12 @@ class UpdatePetComponent extends Component {
             img: ''
         }
 
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleFile = this.handleFile.bind(this)
+    }
+
+    componentDidMount(){
         PetDataService.retrievePet(this.props.match.params.id)
             .then(
                 response => {
@@ -23,16 +29,8 @@ class UpdatePetComponent extends Component {
                         contributor: response.data.contributor,
                         img: response.data.img
                     })
-
-                    console.log(response.data.img)
-
-                    document.querySelector('img').src = response.data.img
                 }
             )
-
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-        this.handleFile = this.handleFile.bind(this)
     }
 
     handleChange(event) {
@@ -42,18 +40,18 @@ class UpdatePetComponent extends Component {
     }
 
     handleFile(event){
-            const preview = document.querySelector('img')
-            const file = document.querySelector('input[type=file]').files[0]
-            const reader = new FileReader()
+        const preview = document.querySelector('img')
+        const file = document.querySelector('input[type=file]').files[0]
+        const reader = new FileReader()
 
-            reader.addEventListener("load", function () {
-                preview.src = reader.result
-            }, false)
+        reader.addEventListener("load", function () {
+            preview.src = reader.result
+        }, false)
 
-            if (file) {
-                reader.readAsDataURL(file)
-            }
+        if (file) {
+            reader.readAsDataURL(file)
         }
+    }
 
     handleSubmit() {
         const preview = document.querySelector('img')
@@ -75,11 +73,11 @@ class UpdatePetComponent extends Component {
 
     render() {
 
-    console.log("render")
+        console.log("render")
 
         return(
             <div>
-                <div className="jumbotron" style={{backgroundColor: "gray"}}>
+                <div className="jumbotron" style={{height:"50px", backgroundColor: "gray"}}>
                     <h3 style={{textAlign: "center"}}>Update Pet</h3>
                 </div>
                 <div className="container">
@@ -99,7 +97,7 @@ class UpdatePetComponent extends Component {
                         <div>
                             <br/>
                             <input type="file" name="img" onChange={this.handleFile}/>
-                            <img src="" height="200" alt="preview..."></img>
+                            <img src={"data:image/png;base64," + this.state.img} height="200" alt="preview..."></img>
                         </div><br/>
                         <input className="btn btn-success" type="submit" value="Submit" name="submit"/>
                     </form>
