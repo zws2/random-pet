@@ -44,10 +44,6 @@ class AddPet extends Component {
         preview.src.indexOf(",") + 1,
         preview.src.length)
 
-        console.log(image_source)
-
-
-
         let pet = {
             id: this.state.id,
             title: this.state.title,
@@ -58,14 +54,9 @@ class AddPet extends Component {
         PetDataService.createPet(pet)
             .then(this.props.history.push(`/PetRegistry`))
 
-        this.state.jack.forEach((elm) => {
-
-        })
-
     }
 
     render() {
-
         return(
             <div>
                 <div className="jumbotron" style={{height: "50px", backgroundColor: "gray"}}>
@@ -73,10 +64,6 @@ class AddPet extends Component {
                 </div>
                 <div className="container">
                     <form onSubmit={this.handleSubmit}>
-{/*                         <div className="form-group"> */}
-{/*                             <label>ID:</label> */}
-{/*                             <input className="form-control" type="text" value={this.state.id} disabled/> */}
-{/*                         </div> */}
                         <div>
                             <label>Title:</label>
                             <input className="form-control" type="text" name="title" onChange={this.handleChange}/>
@@ -96,7 +83,6 @@ class AddPet extends Component {
                         </div>
                         <br />
                              <input className="btn btn-success" type="submit" value="Submit" name="submit"/>
-{/*                         <button className="btn btn-success" type="submit">Submit</button><br/><br/> */}
                     </form><br/><br/>
                 </div>
             </div>
