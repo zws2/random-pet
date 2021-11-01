@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import PetDataService from '../../service/PetDataService';
 
 class WelcomeComponent extends Component {

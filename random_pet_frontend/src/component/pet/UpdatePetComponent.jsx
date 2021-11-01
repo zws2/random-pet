@@ -1,18 +1,44 @@
 import React, { Component } from 'react'
-import { Formik, Form, Field } from 'formik'
 import PetDataService from '../../service/PetDataService'
 
 class UpdatePetComponent extends Component {
     constructor(props) {
         super(props)
+
         this.state = {
             id: this.props.match.params.id,
-            title: this.props.match.params.title,
-            caption: this.props.match.params.caption,
-            contributor: this.props.match.params.contributor,
-            img: this.props.match.params.img
+            title: '',
+            caption: '',
+            contributor: '',
+            img: ''
         }
+
+        PetDataService.retrievePet(this.props.match.params.id)
+            .then(
+                response => {
+                    this.setState({
+                        id: response.data.id,
+                        title: response.data.title,
+                        caption: response.data.caption,
+                        contributor: response.data.contributor,
+                        img: response.data.img
+                    })
+
+                    console.log(response.data.img)
+
+                    document.querySelector('img').src = response.data.img
+                }
+            )
+
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleFile = this.handleFile.bind(this)
+    }
+
+    handleChange(event) {
+            this.setState({
+                [event.target.name]: event.target.value
+            })
     }
 
     handleFile(event){
@@ -30,65 +56,54 @@ class UpdatePetComponent extends Component {
         }
 
     handleSubmit() {
-            const preview = document.querySelector('img')
-            let image_source = preview.src.substring(
-            preview.src.indexOf(",") + 1,
-            preview.src.length)
+        const preview = document.querySelector('img')
+        let image_source = preview.src.substring(
+        preview.src.indexOf(",") + 1,
+        preview.src.length)
 
-            let pet = {
-                id: this.state.id,
-                title: this.state.title,
-                caption: this.state.caption,
-                contributor: this.state.contributor,
-                img: image_source
-            }
-            PetDataService.updatePet(pet)
-                .then(this.props.history.push(`/PetRegistry`))
-
+        let pet = {
+            id: this.state.id,
+            title: this.state.title,
+            caption: this.state.caption,
+            contributor: this.state.contributor,
+            img: image_source
         }
+        PetDataService.updatePet(pet)
+            .then(this.props.history.push(`/petRegistry`))
+    }
+
 
     render() {
-        let {id, title, caption, contributor, img} = this.state
+
+    console.log("render")
+
         return(
             <div>
                 <div className="jumbotron" style={{backgroundColor: "gray"}}>
-                <h3 style={{textAlign: "center"}}>Update Pet</h3>
+                    <h3 style={{textAlign: "center"}}>Update Pet</h3>
                 </div>
                 <div className="container">
-                    <Formik
-                        initialValues={{id, title, caption, contributor, img}}
-                        onSubmit={this.handleSubmit}
-                        enableReinitialize={true}
-                    >
-                        {
-                            () => (
-                                <Form>
-                                    <fieldset className="form-group">
-                                        <label>Id</label>
-                                        <Field className="form-control" type="text" name="id" disabled />
-                                    </fieldset>
-                                    <fieldset>
-                                        <label>Title</label>
-                                        <Field className="form-control" type="text" name="title" />
-                                    </fieldset>
-                                    <fieldset>
-                                        <label>Caption</label>
-                                        <Field className="form-control" type="text" name="caption" />
-                                    </fieldset>
-                                    <fieldset>
-                                        <label>Contributor</label>
-                                        <Field className="form-control" type="text" name="contributor" />
-                                    </fieldset>
-                                    <fieldset>
-                                        <br/>
-                                        <input type="file" name="img" onChange={this.handleFile}/>
-                                        <img src="" height="200" alt="Image preview..."></img>
-                                    </fieldset><br/>
-                                    <input className="btn btn-success" type="submit" value="Submit" name="submit"/>
-                                </Form>
-                            )
-                        } 
-                    </Formik><br/><br/>
+                    <form onSubmit={this.handleSubmit}>
+                        <div>
+                            <label>Title</label>
+                            <input className="form-control" type="text" name="title" value={this.state.title} onChange={this.handleChange}/>
+                        </div>
+                        <div>
+                            <label>Caption</label>
+                            <input className="form-control" type="text" name="caption" value={this.state.caption} onChange={this.handleChange}/>
+                        </div>
+                        <div>
+                            <label>Contributor</label>
+                            <input className="form-control" type="text" name="contributor" value={this.state.contributor} onChange={this.handleChange}/>
+                        </div>
+                        <div>
+                            <br/>
+                            <input type="file" name="img" onChange={this.handleFile}/>
+                            <img src="" height="200" alt="preview..."></img>
+                        </div><br/>
+                        <input className="btn btn-success" type="submit" value="Submit" name="submit"/>
+                    </form>
+                <br/><br/>
                 </div>
             </div>
         )

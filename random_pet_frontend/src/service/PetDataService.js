@@ -6,6 +6,10 @@ class PetDataService {
         return axios.get(`http://localhost:8080/retrieveAllPets`);
     }
 
+    retrievePet(id) {
+        return axios.get(`http://localhost:8080/retrievePet/${id}`);
+    }
+
     deletePet(id) {
         return axios.delete(`http://localhost:8080/deletePet/${id}`)
     }
