@@ -67,14 +67,14 @@ class PetRegistryComponent extends Component {
                        <tbody>
                            {
                                this.state.pets.map (
-                                   pets =>
-                                   <tr style={{textAlign: "center"}} key={pets.id}>
-                                       <td>{pets.id}</td>
-                                       <td>{pets.title}</td>
-                                       <td>{pets.caption}</td>
-                                       <td>{pets.contributor}</td>
-                                       <td><button className="btn btn-warning" onClick={() => this.deletePetClicked(pets.id, pets.title, pets.caption)}>Delete</button></td>
-                                       <td><button className="btn btn-success" onClick={() => this.upDatePetClicked(pets.id, pets.title)}>Update</button></td>
+                                   pet =>
+                                   <tr style={{textAlign: "center"}} key={pet.id}>
+                                       <td>{pet.id}</td>
+                                       <td>{pet.title}</td>
+                                       <td>{pet.caption}</td>
+                                       <td>{pet.contributor}</td>
+                                       <td><button className="btn btn-warning" onClick={() => this.deletePetClicked(pet.id, pet.title, pet.caption)}>Delete</button></td>
+                                       <td><button className="btn btn-success" onClick={() => this.upDatePetClicked(pet.id, pet.title)}>Update</button></td>
                                    </tr>
                                )
                            }
