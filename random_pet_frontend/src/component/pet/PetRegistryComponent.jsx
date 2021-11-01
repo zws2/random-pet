@@ -14,7 +14,14 @@ class PetRegistryComponent extends Component {
     }
 
     componentDidMount() {
-        this.refreshPetRegistry();
+        this.refreshPetRegistry()
+        console.log("componentDidMount")
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.pets.length !== this.state.pets.length){
+            console.log("componentDidUpdate")
+        }
     }
 
     refreshPetRegistry() {
@@ -40,18 +47,21 @@ class PetRegistryComponent extends Component {
         )
     }
     
-    upDatePetClicked(id, title) {
+    upDatePetClicked(pet) {
         console.log('Update Pet Clicked')
-        this.props.history.push(`/pet/${id}/${title}`)
+
+        this.props.history.push(`/updatePet/${pet.id}`)
     }
 
     addPetClicked() {
         console.log('Add AddPet Clicked')
-        this.props.history.push(`/thePet/-1`)
+        this.props.history.push(`/addPet/-1`)
     }
 
    render() {
-       return(
+        console.log("render")
+
+        return(
            <div className="container">
                <h1 style={{textAlign:"center"}}>Pet Registry</h1><br/>
                <div className="jumbotron"  style={{backgroundColor: "gray", color: "white"}}>
@@ -74,21 +84,19 @@ class PetRegistryComponent extends Component {
                                        <td>{pet.caption}</td>
                                        <td>{pet.contributor}</td>
                                        <td><button className="btn btn-warning" onClick={() => this.deletePetClicked(pet.id, pet.title, pet.caption)}>Delete</button></td>
-                                       <td><button className="btn btn-success" onClick={() => this.upDatePetClicked(pet.id, pet.title)}>Update</button></td>
+                                       <td><button className="btn btn-success" onClick={() => this.upDatePetClicked(pet)}>Update</button></td>
                                    </tr>
                                )
                            }
                        </tbody>
                    </table>
-
-
                    <div className="row">
                        <br/>
                        <button className="btn btn-success" onClick={this.addPetClicked}>Add Pet</button>
                    </div>
                </div>
            </div>
-       )
+        )
    } 
 }
 

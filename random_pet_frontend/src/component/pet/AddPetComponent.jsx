@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import PetDataService from '../../service/PetDataService'
 
-class AddPet extends Component {
-
+class AddPetComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -11,7 +10,6 @@ class AddPet extends Component {
             caption: '',
             contributor: '',
             img: '',
-            jack: []
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -52,8 +50,7 @@ class AddPet extends Component {
             img: image_source
         }
         PetDataService.createPet(pet)
-            .then(this.props.history.push(`/PetRegistry`))
-
+            .then(this.props.history.push(`/petRegistry`))
     }
 
     render() {
@@ -79,7 +76,7 @@ class AddPet extends Component {
                         <div>
                         <br />
                              <input type="file" name="img" onChange={this.handleFile}/>
-                             <img src="" height="200" alt="Image preview..."></img>
+                             <img src="" height="200" alt="preview..."></img>
                         </div>
                         <br />
                              <input className="btn btn-success" type="submit" value="Submit" name="submit"/>
@@ -90,4 +87,4 @@ class AddPet extends Component {
     }
 }
 
-export default AddPet
+export default AddPetComponent

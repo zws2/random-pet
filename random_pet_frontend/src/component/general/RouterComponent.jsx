@@ -5,7 +5,7 @@ import WelcomeComponent from './WelcomeComponent'
 import HeaderComponent from '../header_footer/HeaderComponent'
 import PetRegistryComponent from '../pet/PetRegistryComponent'
 import UpdatePetComponent from '../pet/UpdatePetComponent'
-import AddPet from '../pet/AddPet'
+import AddPetComponent from '../pet/AddPetComponent'
 
 class RouterComponent extends Component {
    render() {
@@ -14,10 +14,10 @@ class RouterComponent extends Component {
             <Router>
                 <HeaderComponent />
                     <Switch>
-                        <Route exact path="/"><WelcomeComponent name="Everett"/></Route>                       
-                        <Route path="/thePet/:id" component={AddPet} />
-                        <Route path="/pet/:id/:title" component={UpdatePetComponent} />
-                        <Route path="/PetRegistry" exact component={PetRegistryComponent} />
+                        <Route exact path="/"><WelcomeComponent/></Route>
+                        <Route path="/addPet/:id" component={AddPetComponent} />
+                        <Route path="/updatePet/:id" component={UpdatePetComponent} />
+                        <Route path="/petRegistry" exact component={PetRegistryComponent} />
                     </Switch>
                 <FooterComponent /> 
             </ Router>
