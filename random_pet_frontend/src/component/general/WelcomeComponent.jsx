@@ -37,7 +37,9 @@ class WelcomeComponent extends Component {
                     <div >
                         <h1 style={{textAlign: "center"}}>{pet.title}</h1>
                         <div className="imgbox">
-                            <img class="img-circle img-responsive center-fit" alt={pet.caption} src={"data:image/png;base64," + pet.img} />
+                            
+                            <img className="img-fluid center-fit" alt={pet.caption} src={"data:image/png;base64," + pet.img} />
+                            {/* <img className="img-circle img-responsive center-fit" alt={pet.caption} src={"data:image/png;base64," + pet.img} /> */}
                         </div>
                         <p style={{textAlign:"center"}}>Caption: {pet.caption}</p>
                         <p style={{textAlign:"center"}}>Contributor: {pet.contributor}</p>
