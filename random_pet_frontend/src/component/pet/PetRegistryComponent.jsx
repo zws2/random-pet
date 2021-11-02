@@ -66,14 +66,23 @@ class PetRegistryComponent extends Component {
         return(
            <div className="container">
                <h1 style={{textAlign:"center"}}>Pet Registry</h1><br/>
-               <div className="jumbotron"  style={{backgroundColor: "gray", color: "white"}}>
-                   <table className="table">
+               {/* <div className="jumbotron"  style={{textAlign: "center",  color: "white"}}> */}
+               <div className="jumbotron sticky-top"  style={{textAlign: "center",  color: "white"}}>
+               
+                   <table className="table table-striped">
                        <thead>
-                           <tr style={{textAlign: "center" , color: "black"}}>
+                           <tr class="table-dark" style={{textAlign: "center"}}>
                                <th>Id</th>
                                <th>Title</th>
                                <th>Caption</th>
                                <th>Contributor</th>
+                               <th></th>
+                               <th>
+                                    <div >
+                                        <br/>
+                                        <button className="btn btn-primary" onClick={this.addPetClicked}>Add Pet</button>
+                                    </div>
+                               </th>
                            </tr>
                        </thead>
                        <tbody>
@@ -92,10 +101,7 @@ class PetRegistryComponent extends Component {
                            }
                        </tbody>
                    </table>
-                   <div className="row">
-                       <br/>
-                       <button className="btn btn-success" onClick={this.addPetClicked}>Add Pet</button>
-                   </div>
+                   
                </div>
            </div>
         )
