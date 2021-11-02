@@ -15,53 +15,39 @@ class PetRegistryComponent extends Component {
 
     componentDidMount() {
         this.refreshPetRegistry()
-        console.log("componentDidMount")
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        if(prevState.pets !== this.state.pets){
-            console.log("componentDidUpdate")
-        }
     }
 
     refreshPetRegistry() {
         PetDataService.retrieveAllPets()
         .then(
             response => {
-                console.log("response")
                 this.setState({
-                    pets: response.data,
+                    pets: response.data
                 })
             }
         )
     }
 
     deletePetClicked(id, title, caption) {
-        console.log('Delete Pet Clicked')
         PetDataService.deletePet(id)
         .then(
             response => {
                 this.setState({message: `Deleted Pet: ${title}`})
                 alert(this.state.message)
-                this.refreshPetRegistry();
+                this.refreshPetRegistry()
             }
         )
     }
     
     upDatePetClicked(pet) {
-        console.log('Update Pet Clicked')
-
         this.props.history.push(`/updatePet/${pet.id}`)
     }
 
     addPetClicked() {
-        console.log('Add AddPet Clicked')
         this.props.history.push(`/addPet/-1`)
     }
 
    render() {
-        console.log("render")
-        console.log(this.state.pets)
 
         return(
            <div className="container">
