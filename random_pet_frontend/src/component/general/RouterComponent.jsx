@@ -19,7 +19,7 @@ class RouterComponent extends Component {
                         <Route path="/updatePet/:id" component={UpdatePetComponent} />
                         <Route path="/petRegistry" exact component={PetRegistryComponent} />
                     </Switch>
-                <FooterComponent /> 
+                <FooterComponent />
             </ Router>
             </div>
        )

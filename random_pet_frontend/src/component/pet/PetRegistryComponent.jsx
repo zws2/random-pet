@@ -18,14 +18,13 @@ class PetRegistryComponent extends Component {
     }
 
     refreshPetRegistry() {
-        PetDataService.retrieveAllPets()
-        .then(
-            response => {
-                this.setState({
-                    pets: response.data
-                })
-            }
-        )
+        setTimeout(() => {
+            PetDataService.retrieveAllPets()
+                .then(
+                    response => {
+                            this.setState({
+                            pets: response.data})})
+        }, 250)
     }
 
     deletePetClicked(id, title, caption) {
