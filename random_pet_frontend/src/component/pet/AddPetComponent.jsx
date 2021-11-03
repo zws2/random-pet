@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import PetDataService from '../../service/PetDataService'
+import PetDataService, {submitPet} from '../../service/PetDataService'
 
 class AddPetComponent extends Component {
     constructor(props) {
@@ -37,6 +37,7 @@ class AddPetComponent extends Component {
     }
 
     handleSubmit() {
+        console.log("submit")
         const preview = document.querySelector('img')
         let image_source = preview.src.substring(
         preview.src.indexOf(",") + 1,
@@ -49,8 +50,11 @@ class AddPetComponent extends Component {
             contributor: this.state.contributor,
             img: image_source
         }
-        PetDataService.createPet(pet)
+
+        PetDataService.addPet(pet)
             .then(this.props.history.push(`/petRegistry`))
+
+//         submitPet(pet).then(this.props.history.push(`/petRegistry`))
     }
 
     render() {

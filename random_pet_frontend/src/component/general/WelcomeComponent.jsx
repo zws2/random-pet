@@ -27,8 +27,7 @@ class WelcomeComponent extends Component {
 
     render() {
 
-        const pet = this.state.pets.sort(() => Math.random() - Math.random())
-                                               .find(() => true);
+        const pet = this.state.pets[Math.floor(Math.random() * this.state.pets.length)]
 
         return(         
             <div className="image_container">
@@ -37,11 +36,9 @@ class WelcomeComponent extends Component {
                     <div >
                         <h1 style={{textAlign: "center"}}>{pet.title}</h1>
                         <div className="imgbox">
-                            
                             <img className="img-fluid center-fit" alt={pet.caption} src={"data:image/png;base64," + pet.img} />
-                            {/* <img className="img-circle img-responsive center-fit" alt={pet.caption} src={"data:image/png;base64," + pet.img} /> */}
                         </div>
-                        <p style={{textAlign:"center"}}>Caption: {pet.caption}</p>
+                        <p style={{textAlign:"center"}}>{pet.caption}</p>
                         <p style={{textAlign:"center"}}>Contributor: {pet.contributor}</p>
                     </div >
             }
