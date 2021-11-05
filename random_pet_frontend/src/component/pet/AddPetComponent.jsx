@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PetDataService, {submitPet} from '../../service/PetDataService'
+import FooterComponent from '../header_footer/FooterComponent';
 
 class AddPetComponent extends Component {
     constructor(props) {
@@ -86,6 +87,7 @@ class AddPetComponent extends Component {
                              <input className="btn btn-success" type="submit" value="Submit" name="submit"/>
                     </form><br/><br/>
                 </div>
+                <FooterComponent />
             </div>
         )
     }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import FooterComponent from '../header_footer/FooterComponent'
 import WelcomeComponent from './WelcomeComponent'
 import HeaderComponent from '../header_footer/HeaderComponent'
 import PetRegistryComponent from '../pet/PetRegistryComponent'
@@ -19,7 +18,6 @@ class RouterComponent extends Component {
                         <Route path="/updatePet/:id" component={UpdatePetComponent} />
                         <Route path="/petRegistry" exact component={PetRegistryComponent} />
                     </Switch>
-                <FooterComponent />
             </ Router>
             </div>
        )

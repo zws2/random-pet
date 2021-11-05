@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PetDataService from '../../service/PetDataService';
+import FooterComponent from '../header_footer/FooterComponent';
 
 class PetRegistryComponent extends Component {
     constructor(props) {
@@ -51,7 +52,6 @@ class PetRegistryComponent extends Component {
         return(
            <div className="container">
                <h1 style={{textAlign:"center"}}>Pet Registry</h1><br/>
-               {/* <div className="jumbotron"  style={{textAlign: "center",  color: "white"}}> */}
                <div className="jumbotron sticky-top"  style={{textAlign: "center",  color: "white"}}>
                
                    <table className="table table-striped">
@@ -85,9 +85,10 @@ class PetRegistryComponent extends Component {
                                )
                            }
                        </tbody>
+                        <br/>
                    </table>
-                   
                </div>
+                <FooterComponent />
            </div>
         )
    } 

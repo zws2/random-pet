@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PetDataService from '../../service/PetDataService';
+import FooterComponent from '../header_footer/FooterComponent';
 
 class WelcomeComponent extends Component {
     constructor(props) {
@@ -42,6 +43,7 @@ class WelcomeComponent extends Component {
                         <p style={{textAlign:"center"}}>Contributor: {pet.contributor}</p>
                     </div >
             }
+                <FooterComponent />
             </div>
         )
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PetDataService from '../../service/PetDataService'
+import FooterComponent from '../header_footer/FooterComponent';
 
 class UpdatePetComponent extends Component {
     constructor(props) {
@@ -103,6 +104,7 @@ class UpdatePetComponent extends Component {
                     </form>
                 <br/><br/>
                 </div>
+                <FooterComponent />
             </div>
         )
     }
