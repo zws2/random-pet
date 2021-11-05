@@ -52,7 +52,6 @@ class PetRegistryComponent extends Component {
         return(
            <div className="container">
                <h1 style={{textAlign:"center"}}>Pet Registry</h1><br/>
-               {/* <div className="jumbotron"  style={{textAlign: "center",  color: "white"}}> */}
                <div className="jumbotron sticky-top"  style={{textAlign: "center",  color: "white"}}>
                
                    <table className="table table-striped">
@@ -86,8 +85,8 @@ class PetRegistryComponent extends Component {
                                )
                            }
                        </tbody>
+                        <br/>
                    </table>
-                   
                </div>
                 <FooterComponent />
            </div>
